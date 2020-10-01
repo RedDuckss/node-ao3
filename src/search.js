@@ -18,13 +18,16 @@ async function search(query) {
 			required_tags: [
 				...element.querySelectorAll('ul.required-tags li a span.text')
 			].map(requireTagElement => requireTagElement.innerHTML),
-			date: element.querySelector('p.datetime'),
-			tags: [
-				...element.querySelectorAll('ul.tags.commas li')
-			].map(tagElement => ({
-				type: tagElement.className,
-				value: tagElement.querySelector('a.tag').innerHTML
-			})),
+			date: element.querySelector('p.datetime').innerHTML,
+			tags: {
+				rating: [...element.querySelectorAll('ul.tags.commas li.ratings')].map(ratingTagElement => ratingTagElement.innerHTML),
+				warning: [...element.querySelectorAll('ul.tags.commas li.warnings a')].map(warningTagElement => warningTagElement.innerHTML),
+				category: [...element.querySelectorAll('ul.tags.commas li.categorys a')].map(categoryTagElement => categoryTagElement.innerHTML),
+				fandom: [...element.querySelectorAll('ul.tags.commas li.fandoms a')].map(fandomTagElement => fandomTagElement.innerHTML),
+				relationship: [...element.querySelectorAll('ul.tags.commas li.relationships a')].map(relationshipTagElement => relationshipTagElement.innerHTML),
+				character: [...element.querySelectorAll('ul.tags.commas li.characters a')].map(characterTagElement => characterTagElement.innerHTML),
+				freeform: [...element.querySelectorAll('ul.tags.commas li.freeforms a')].map(freeformTagElement => freeformTagElement.innerHTML),
+			},
 			summary: element.querySelector('blockquote p').innerHTML,
 			stats: {
 				lang: element.querySelector('dl.stats dd.language')?.innerHTML,
