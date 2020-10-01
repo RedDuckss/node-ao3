@@ -2,7 +2,7 @@ const got = require('got');
 const { JSDOM } = require('jsdom');
 
 async function details(id) {
-	const detailsURL = `https://archiveofourown.org/works/${id}`;
+	const detailsURL = `https://archiveofourown.org/works/${id}?view_adult=true`;
 
 	const response = await got(detailsURL);
 	const dom = new JSDOM(response.body);
