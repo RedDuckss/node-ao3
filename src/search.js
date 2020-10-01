@@ -2,7 +2,7 @@ const got = require('got');
 const { JSDOM } = require('jsdom');
 
 async function search(query) {
-	const searchURL = `https://archiveofourown.org/works/search?utf8=✓&work_search[query]=${query}`;
+	const searchURL = `https://archiveofourown.org/works/search?utf8=✓&work_search[query]=${query}&view_adult=true`;
 
 	const response = await got(searchURL);
 	const dom = new JSDOM(response.body);
